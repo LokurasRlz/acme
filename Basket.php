@@ -60,7 +60,7 @@ class Basket
         foreach ($this->offers as $productCode => $discountPercentage) {
             if (isset($productCounts[$productCode])) {
                 $productCount = $productCounts[$productCode];
-                $discount += floor($productCount / 2) * ($this->productCatalogue[$productCode]['price'] * $discountPercentage / 100);
+                $discount += floor($productCount / 2) >= 1 ? ($this->productCatalogue[$productCode]['price'] * $discountPercentage / 100) : 0;
             }
         }
 
