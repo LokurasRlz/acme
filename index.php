@@ -20,7 +20,9 @@ $offers = [
     'R01' => [
         'type' => 'half_price',
         // Offer type
-        'value' => 1 // Number of items eligible for the offer
+        'value' => 1,
+        // Number of items eligible for the offer
+        'percent' => 0.5 // Discount offer percent 0.5 => 50%, 1 => 100%
     ],
     // Add more offers here if needed
 ];

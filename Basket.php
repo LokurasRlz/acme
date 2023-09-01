@@ -75,7 +75,7 @@ class Basket
             switch ($offerDetails['type']) {
                 case 'half_price':
                     $eligibleCount = floor($productCount / 2);
-                    $discount = $eligibleCount * ($this->productCatalogue[$productCode]['price'] / 2);
+                    $discount = $eligibleCount >= $offerDetails['value'] ? ($this->productCatalogue[$productCode]['price'] * $offerDetails['percent']) : 0;
                     break;
                 // Add more offer types here if needed
             }
