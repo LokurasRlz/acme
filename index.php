@@ -15,8 +15,14 @@ $deliveryChargeRules = [
     ['limit' => PHP_INT_MIN, 'charge' => 4.95]
 ];
 
+// Offers: ['product code' => offer details]
 $offers = [
-    'R01' => 50
+    'R01' => [
+        'type' => 'half_price',
+        // Offer type
+        'value' => 1 // Number of items eligible for the offer
+    ],
+    // Add more offers here if needed
 ];
 
 $basket = new Basket($productCatalogue, $deliveryChargeRules, $offers);

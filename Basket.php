@@ -57,10 +57,27 @@ class Basket
         $discount = 0;
         $productCounts = array_count_values($this->items);
 
-        foreach ($this->offers as $productCode => $discountPercentage) {
+        foreach ($this->offers as $productCode => $offerDetails) {
             if (isset($productCounts[$productCode])) {
                 $productCount = $productCounts[$productCode];
-                $discount += floor($productCount / 2) >= 1 ? ($this->productCatalogue[$productCode]['price'] * $discountPercentage / 100) : 0;
+                $discount += $this->applyOfferDiscount($offerDetails, $productCount);
+            }
+        }
+
+        return $discount;
+    }
+
+    private function applyOfferDiscount($offerDetails, $productCount)
+    {
+        $discount = 0;
+
+        if (isset($offerDetails['type']) && isset($offerDetails['value'])) {
+            switch ($offerDetails['type']) {
+                case 'half_price':
+                    $eligibleCount = floor($productCount / 2);
+                    $discount = $eligibleCount * ($this->productCatalogue[$productCode]['price'] / 2);
+                    break;
+                // Add more offer types here if needed
             }
         }
 
